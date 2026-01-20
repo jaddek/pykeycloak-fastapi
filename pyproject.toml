@@ -1,0 +1,124 @@
+[project]
+name = "pykeycloak_fastapi"
+version = "0.1.0"
+description = "FastAPI pykeycloak layer"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = {text = "MIT"}
+authors = [
+    {name = "Anton 'Tony' Nazarov", email = "tonynazarov+dev@gmail.com"},
+]
+maintainers = [
+    {name = "Anton 'Tony' Nazarov", email = "tonynazarov+dev@gmail.com"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+keywords = ["keycloak", "oauth", "openid", "authentication", "authorization", "async", "client"]
+
+dependencies = [
+    "fastapi>=0.105.0",
+    "pykeycloak>=0.2.4",
+]
+
+[tool.uv.sources]
+pykeycloak = { git = "https://github.com/jaddek/pykeycloak.git", rev = "v0.2.4" }
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+include = '\.pyi?$'
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+extend-exclude = [
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",     # pycodestyle errors
+    "W",     # pycodestyle warnings
+    "F",     # pyflakes
+    "I",     # isort
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "UP",    # pyupgrade
+    "ASYNC", # flake8-async
+    "S",     # flake8-bandit
+    "PYI",   # flake8-pyi (типизация)
+]
+ignore = [
+    "E501",   # Длина строки (доверяем Black/Ruff Format)
+    "B008",   # Вызовы функций в аргументах (удобно для FastAPI-подобных DI)
+    "B010",
+    "B009",
+    "PYI013", # setattr в stub-файлах (разрешаем для декораторов)
+    "UP037",  # Кавычки в аннотациях (полезно для циклических импортов)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**/*.py" = ["S101"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "tests.*",
+    "test.*",
+]
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+asyncio_mode = "auto"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.9,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+  {include-group = "lint"},
+  {include-group = "test"},
+]
+lint = [
+    "black>=25.1.0",
+    "mypy>=1.14.0",
+    "ruff>=0.9.0",
+]
+test = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.25.0",
+    "pytest-cov>=6.0.0",
+]
