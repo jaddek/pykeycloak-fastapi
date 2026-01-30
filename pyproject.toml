@@ -1,6 +1,6 @@
 [project]
 name = "pykeycloak_fastapi"
-version = "0.1.0"
+version = "0.1.1"
 description = "FastAPI pykeycloak layer"
 readme = "README.md"
 requires-python = ">=3.12,<3.15"
@@ -17,16 +17,17 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Typing :: Typed",
 ]
-keywords = ["keycloak", "oauth", "openid", "authentication", "authorization", "async", "client"]
+keywords = ["fastapi", "keycloak", "helpers"]
 
 dependencies = [
     "fastapi>=0.105.0",
     "pykeycloak>=0.2.4",
+    "pyyaml>=6.0.3",
     "uvicorn>=0.40.0",
 ]
 
 [tool.uv.sources]
-pykeycloak = { git = "https://github.com/jaddek/pykeycloak.git", rev = "v0.2.4" }
+pykeycloak = { git = "https://github.com/jaddek/pykeycloak.git", rev = "v0.5.4" }
 
 [tool.black]
 line-length = 88

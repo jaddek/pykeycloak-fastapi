@@ -10,7 +10,7 @@ wheels/
 .venv
 .env.local
 .env.test
+.env
 
 main.py
-.python-version
 .coverage

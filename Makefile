@@ -72,10 +72,7 @@ clean: ## Remove .pyc files and pre-commit cache
 # Run App
 # ========================
 run: ## Run app using uvicorn for local dev
-	@$(load_env); $(UV_RUN) uvicorn src.api.app:app --reload --log-config=log_conf.yaml --port=8101
-
-script-%:
-	$(load_env); $(UV_RUN) $*
+	@$(load_env); $(UV_RUN) uvicorn examples.app:app --reload --port=8101
 
 # ========================
 # Formatting & Linting
