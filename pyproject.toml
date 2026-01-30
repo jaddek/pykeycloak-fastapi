@@ -1,5 +1,5 @@
 [project]
-name = "pykeycloak_fastapi"
+name = "pykeycloak-fastapi"
 version = "0.1.2"
 description = "FastAPI pykeycloak layer"
 readme = "README.md"
