@@ -502,8 +502,8 @@ wheels = [
 
 [[package]]
 name = "pykeycloak"
-version = "0.5.4"
-source = { git = "https://github.com/jaddek/pykeycloak.git?rev=v0.5.4#afb0cb3c43de5d0c18b3e2a1bef98bdcf05b845b" }
+version = "0.5.6"
+source = { git = "https://github.com/jaddek/pykeycloak.git#3a7fb4537064ac3fc261ea353bd52c728a9a3687" }
 dependencies = [
     { name = "httpx", extra = ["http2"] },
 ]
@@ -542,7 +542,7 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.105.0" },
-    { name = "pykeycloak", git = "https://github.com/jaddek/pykeycloak.git?rev=v0.5.4" },
+    { name = "pykeycloak", git = "https://github.com/jaddek/pykeycloak.git" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "uvicorn", specifier = ">=0.40.0" },
 ]

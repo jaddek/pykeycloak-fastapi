@@ -21,13 +21,13 @@ keywords = ["fastapi", "keycloak", "helpers"]
 
 dependencies = [
     "fastapi>=0.105.0",
-    "pykeycloak>=0.2.4",
+    "pykeycloak>=0.5.6",
     "pyyaml>=6.0.3",
     "uvicorn>=0.40.0",
 ]
 
 [tool.uv.sources]
-pykeycloak = { git = "https://github.com/jaddek/pykeycloak.git", rev = "v0.5.4" }
+pykeycloak = { git = "https://github.com/jaddek/pykeycloak.git"}
 
 [tool.black]
 line-length = 88
